@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Containerization and Security in Cloud Computing</title>
+</head>
+<body>
+    <h1>Welcome to the guest lecture</h1>
+    <p>This is a Student attendance page.</p>
+    <h2>Enter your information below:</h2>
+    <table>
+        <thead>
+        <tr>
+            <th>Student Name</th>
+            <th>Email</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for student in students %}
+        <tr>
+            <td>{{ student.name }}</td>
+            <td>{{ student.email }}</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+</body>
+</html>

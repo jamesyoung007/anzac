@@ -1,0 +1,19 @@
+FROM python:3.9-slim-buster
+
+
+
+# Define environment variables
+ENV SERVICE_BUS_CONNECTION_STR="Endpoint=sb://studentattend.servicebus.windows.net/;SharedAccessKeyName=RootManageSharedAccessKey;SharedAccessKey=Yoa1WTBpGLx4tQWqHSdU7ALErw5Vc+GUz+ASbK75TLE="
+ENV SERVICE_BUS_QUEUE_NAME="students"
+ENV COSMOS_CONNECTION_STR="AccountEndpoint=https://chdbstudentdemo.documents.azure.com:443/;AccountKey=DtdKcjFjnFccc5ul9BAqQr4ZaZoxAcZQXm3bkPzltbC6O39uLKtrbXT4ajDpAwDtNWLfN3GCeduoACDb5WEDEg==;"
+ENV COSMOS_DB_NAME="chdbstudentdemo"
+ENV COSMOS_CONTAINER_NAME="students1"
+
+WORKDIR /app 
+
+COPY requirements.txt requirements.txt
+RUN python -m pip install -r requirements.txt
+
+COPY myfunction.py myfunction.py
+
+CMD [ "python", "./myfunction.py" ]
